@@ -1,0 +1,37 @@
+<app-header></app-header>
+
+<div class="mainWrapper">
+  <div class="container-fluid">
+    <div id="dashboardForm" class="py-5">
+      <form id="bodycontainer" autocomplete="off" novalidate>
+        <!--The content below is only a placeholder and can be replaced.-->
+
+        <div style="background-color:antiquewhite">
+          <main>
+            <div class="page-content">
+              <span class="">
+                <p>
+                  <i>
+                    <b>
+                      <div class="alert alert-danger">
+                        Report will generate based on the event selected from Dashboard.
+                      </div>
+                    </b>
+                  </i>
+                </p>
+              </span>
+
+              <div class="">
+                <div class="report-container">
+                  <app-ssrs-reportviewer [reportserver]="reportServer" [reporturl]="reportUrl" [showparameters]="showParameters" [parameters]="parameters"
+                    [language]="language" [width]="width" [height]="height" [toolbar]="toolbar"></app-ssrs-reportviewer>
+                </div>
+              </div>
+            </div>
+          </main>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

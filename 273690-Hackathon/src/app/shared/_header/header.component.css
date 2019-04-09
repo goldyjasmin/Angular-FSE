@@ -1,0 +1,23 @@
+.bg-light {
+    
+    background: linear-gradient(to right,#4CB3CF, #6BB445);
+}
+.navbrandfont{
+    color:#0965f8;
+    font-family: 'Arizonia';font-size: 22px;
+    font-weight: bold;
+  
+}
+.nav-font{
+  
+     color:black;
+    font-weight:bold; 
+}
+.dropdown-menu{
+    background: linear-gradient(to left,#4CB3CF, #6BB445);
+}
+.navbar-toggler-icon
+{
+    background-color: black;
+}
+

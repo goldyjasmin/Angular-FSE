@@ -1,0 +1,207 @@
+<app-header></app-header>
+<!-- Page Wrapper -->
+<div id="mainWrapper" class="align-items-center">
+  <!-- Content Wrapper -->
+  <div id="content-wrapper">
+    <!-- Main Content -->
+    <div id="content">
+      <!-- Begin Page Content -->
+      <div class="container">
+        <!-- Content Row -->
+        <div class="row py-2">
+          <!-- Event Dropdown -->
+          <div class="col-xl-5 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Event Filter</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">
+                      <div class="">
+                        <select [(ngModel)]="eventSelectedId" class="custom-select mr-sm-2" (change)="onEventChange($event.target.value)">
+                          <option value="0">--Please Select--</option>
+                          <option *ngFor="let e of eventNames" value="{{ e.eventId }}">
+                            {{ e.eventName }}
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Content Row -->
+        <div class="row">
+          <div class="col-md-12 mb-6">
+            <!-- Illustrations -->
+            <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Event Details</h6>
+              </div>
+              <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Event Name
+                  <span class="badge badge-primary badge-pill">{{ eventDetail?.eventName }}
+                  </span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Event Benificary
+                  <span class="badge badge-primary badge-pill">{{ eventDetail?.eventBenificary }}
+                  </span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Lives impacted
+                  <span class="badge badge-primary badge-pill">
+                    {{ eventDetail?.livesImpacted }}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Volunteer Hours
+                  <span class="badge badge-primary badge-pill">{{ eventDetail?.volunteerHours }}
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- Content Column -->
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-4">
+            <!-- User History -->
+            <div class="col-md-12">
+              <div class="tile">
+                <h3 class="tile-title">Event Rating</h3>
+                <ul class="list-group">
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div class="widget-xxsmall danger coloured-icon">
+                      <i class="far fa-sad-cry" style="font-size:42px;color:orange"></i>
+                      <!-- <i class="icon fa fa-smile-o" style="font-size:48px;color:orange"></i> -->
+                    </div>
+                    <span class="badge badge-primary badge-pill">
+                      <b>{{ eventDetail?.rating1Count }}</b>
+                    </span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div class="widget-xxsmall danger coloured-icon">
+                      <i class="far fa-frown" style="font-size:42px;color:orange"></i>
+
+                    </div>
+                    <span class="badge badge-primary badge-pill">
+                      <b>{{ eventDetail?.rating2Count }}</b>
+                    </span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div class="widget-xxsmall danger coloured-icon">
+                      <i class="far fa-meh" style="font-size:42px;color:orange"></i>
+                    </div>
+                    <span class="badge badge-primary badge-pill">
+                      <b>{{ eventDetail?.rating3Count }}</b>
+                    </span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div class="widget-xxsmall danger coloured-icon">
+                      <i class="far fa-smile" style="font-size:42px;color:orange"></i>
+
+                    </div>
+                    <span class="badge badge-primary badge-pill">
+                      <b>{{ eventDetail?.rating4Count }}</b>
+                    </span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div class="widget-xxsmall danger coloured-icon">
+                      <i class="far fa-grin-hearts" style="font-size:42px;color:orange"></i>
+
+                    </div>
+                    <span class="badge badge-primary badge-pill">
+                      <b>{{ eventDetail?.rating5Count }}</b>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md mb">
+              <div class="card-body">
+              </div>
+            </div>
+            <!-- Color System -->
+          </div>
+          <div class="col-md-6 mb-4" id="userDescription">
+
+            <div class="col-lg-12 mb-4">
+              <div class="card bg-primary text-white shadow">
+                <div class="card-body">
+                  Participated Users
+                  <span class="float-right">{{countParticipated}}%</span>
+                  <!-- <div class="text-white-50 small">
+                    <span>{{eventDetail?.participatedUsers}}</span>
+                  </div> -->
+                  <div class="progress mb-4">
+
+                    <!-- <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div> -->
+                    <!-- <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" [style.width]="eventDetail.participatedUsers"></div> -->
+                    <!-- <div class="progress-bar bg-danger" role="progressbar" [ngStyle]="{'width':(eventDetail?.participatedUsers) + '%'}"> </div> -->
+                    <div class="progress-bar bg-danger" role="progressbar" [style.width]="countParticipated + '%'"> </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-12 mb-4">
+              <div class="card bg-success text-white shadow">
+                <div class="card-body">
+                  Registered & Not Attended
+                  <span class="float-right">{{countResgisterdNotAttended}}%</span>
+                  <!-- <div class="text-white-50 small">
+                    <span>{{eventDetail?.resgisterdNotAttended}}</span>
+                  </div> -->
+                  <div class="progress mb-4">
+                    <div class="progress-bar bg-danger" role="progressbar" [style.width]="countResgisterdNotAttended + '%'"> </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class=" col-lg-12 mb-4 ">
+              <div class="card bg-info text-white shadow ">
+                <div class="card-body ">
+                  Registered & Un Registered
+                  <span class="float-right">{{countUnResgisterdNotAttended}}%</span>
+                  <div class="progress mb-4">
+                    <!-- <span>{{eventDetail?.registeredUnregistered}}</span> -->
+                    <div class="progress-bar bg-danger" role="progressbar" [style.width]="countUnResgisterdNotAttended + '%'"> </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-12 mb-4 ">
+              <div class="card bg-warning text-white shadow ">
+                <div class="card-body ">
+                  Feedback Received
+                  <div class="text-white-50 small ">
+                    <span>{{eventDetail?.feedbackcount}} </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-12 mb-4 ">
+              <div class="card bg-danger text-white shadow ">
+                <div class="card-body ">
+                  Feedback Pending
+                  <div class="text-white-50 small ">
+                    <span> {{eventDetail?.feedbackcount}} </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+      <!-- /.container-fluid -->
+    </div>
+    <!-- End of Main Content -->
+  </div>
+  <!-- End of Content Wrapper -->
+</div>
+<app-footer></app-footer>_

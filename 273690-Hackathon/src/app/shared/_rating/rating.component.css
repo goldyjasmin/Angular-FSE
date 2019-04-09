@@ -1,0 +1,54 @@
+
+.rating {
+    float:left;
+}
+
+.rating:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+    clip:rect(0,0,0,0);
+}
+
+.rating:not(:checked) > label {
+    float:right;
+    width:1em;
+    padding:0.1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:200%;
+    line-height:1.2;
+    color:#ddd;
+}
+
+.rating:not(:checked) > label.one:before {
+    content: '😥';
+}
+.rating:not(:checked) > label.two:before {
+    content:'😟';
+}
+.rating:not(:checked) > label.three:before {
+    content:'😐';
+}
+.rating:not(:checked) > label.four:before {
+    content:'🙂';
+}
+.rating:not(:checked) > label.five:before {
+    content:'😍';
+}
+
+.rating > input:checked ~ label {
+    color: #f70;
+}
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+    color: rgb(4, 0, 255);
+}
+
+
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
+    color: #ea0;
+}

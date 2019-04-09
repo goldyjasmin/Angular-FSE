@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light ">
+  <a class="navbar-brand" href="#">
+    <img class="img-responsive" src="/assets/images/Cognizant_logo.png" alt="" width="20%" />
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarResponsive">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/dashboard">
+          <i class="fa fa-tachometer-alt px-1" style="color:black"></i>
+          <span class=" nav-font">Dashboard</span>
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link nav-font" routerLink="/settings">
+          <i class="fa fa-tools px-1" style="color:black"></i>
+          <span class=" nav-font">Configure</span>
+        </a>
+      </li>
+      <!-- to do : wont availble in header -->
+      <li class="nav-item">
+        <a class="nav-link nav-font" routerLink="/reports">
+          <i class="fa fa-chart-bar px-1" style="color:black"></i>
+          <span class=" nav-font">Reports</span>
+        </a>
+      </li>
+      <li class="nav-item dropdown ml-auto">
+        <a class="nav-link dropdown-toggle nav-font" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">
+          <span class=" nav-font">Welcome, User</span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">
+            <span class="px-1 nav-font" (click)="logout()">
+              <i class="fas fa-sign-out-alt" aria-hidden="true">Logout</i>
+            </span>
+          </a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,14 @@
+.full {
+    background: linear-gradient(#4CB3CF, #6BB445);
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+.WelcomeText{
+    color:#f5cacc;
+}  
+

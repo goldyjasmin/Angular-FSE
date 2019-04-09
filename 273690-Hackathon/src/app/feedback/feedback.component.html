@@ -1,0 +1,172 @@
+<div class="full">
+  <div class=" container py-2">
+    <div class="row">
+      <div class="col-md-4">
+      </div>
+      <div class="col-md-12">
+        <div class="col-md-12 mx-auto">
+          <!-- form card login -->
+          <div class="card border-2 border-radius-4" id="feedback-form">
+            <div class="card-header">
+              <h3>
+                <i class="fa fa-comments px-2" style="font-size:36px"></i>
+                <div>
+                  <ul class="list-group">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                      <i>
+                        <b>
+                          <span style="font-size:16px;">Dear Associate, Welcome to outreach feedback for the event you attended, your feedback is important
+                            to us!!.</span>
+                        </b>
+                      </i>
+                    </li>
+                  </ul>
+                  <ng-template [ngIf]="feedbackDetails.isAuthorized">
+                    <ul class="list-group py-2">
+                      <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span style="font-size:16px;">
+                          <b>Event Name</b>
+                        </span>
+                        <span class="badge badge-primary badge-pill">
+                          <i>
+                            <b>
+                              <span style="font-size:14px;">{{ feedbackDetails?.eventName }}
+                              </span>
+                            </b>
+                          </i>
+                        </span>
+                      </li>
+                      <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span style="font-size:16px;">
+                          <b>Event Benificary</b>
+                        </span>
+                        <span class="badge badge-primary badge-pill">
+                          <i>
+                            <b>
+                              <span style="font-size:14px;">{{ feedbackDetails?.eventBenificary }}
+                              </span>
+                            </b>
+                          </i>
+                        </span>
+                      </li>
+                      <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span style="font-size:16px;">
+                          <b> Lives impacted</b>
+                        </span>
+
+                        <span class="badge badge-primary badge-pill">
+                          <i>
+                            <b>
+                              <span style="font-size:14px;">{{ feedbackDetails?.livesImpacted }}
+                              </span>
+                            </b>
+                          </i>
+                        </span>
+                      </li>
+                    </ul>
+                  </ng-template>
+                </div>
+              </h3>
+            </div>
+            <div class="card-body">
+              <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                <ng-template [ngIf]="!feedbackDetails.isAuthorized">
+                  <span>OOPS...looks invalid url. please recheck your email and click the correct link</span>
+                </ng-template>
+                <ng-template [ngIf]="isTypeOne_Users && feedbackDetails.isAuthorized">
+                  <div formGroupName="gnTypeOneUser">
+                    <div class="form-group">
+                      <label for="Q1">
+                        <h5>
+                          <app-rating (ratingClick)="ratingComponentClick($event)"></app-rating>
+                        </h5>
+                      </label>
+
+                      <div></div>
+                    </div>
+                    <div class="form-group">
+                      <label for="Q1">
+                        <h5>
+                          What do you like about volunteering activity?
+                        </h5>
+                      </label>
+                      <textarea class="form-control" formControlName="qst1Ans" rows="4"></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label for="Q2">
+                        <h5>
+                          What can be improved in this voluntering activity?
+                        </h5>
+                      </label>
+                      <textarea class="form-control" formControlName="qst2Ans" rows="4" [ngClass]="{ 'is-invalid': !isMandatory }"></textarea>
+                    </div>
+                  </div>
+                  <button type="submit" [disabled]="!isRatingClicked" class="btn btn-primary">
+                    Submit
+                  </button>
+                </ng-template>
+                <ng-template [ngIf]="isNonTypeOne_Users && feedbackDetails.isAuthorized">
+                  <div formGroupName="gnTypeTwoUser">
+                    <div class="form-group">
+                      <div class="custom-control custom-radio">
+                        <input type="radio" formControlName="rdQ1" class="custom-control-input" name="rdQ1" value="1" id="lblrdQ1" />
+                        <label class="custom-control-label" for="lblrdQ1">
+                          <h5>Unexpected Personal Commitment</h5>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="custom-control custom-radio">
+                        <input class="custom-control-input" type="radio" formControlName="rdQ1" name="rdQ1" value="2" id="lblrdQ2" />
+                        <label class="custom-control-label" for="lblrdQ2">
+                          <h5>Unexpected Official Work</h5>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="custom-control custom-radio">
+                        <input class="custom-control-input" type="radio" formControlName="rdQ1" name="rdQ1" value="3" id="lblrdQ3" />
+                        <label class="custom-control-label" for="lblrdQ3">
+                          <h5>Event Not What I Expected</h5>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="custom-control custom-radio">
+                        <input class="custom-control-input" type="radio" formControlName="rdQ1" name="rdQ1" value="4" id="lblrdQ4" />
+                        <label class="custom-control-label" for="lblrdQ4">
+                          <h5>
+                            Did Not Received Further Informatiom about Event
+                          </h5>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="custom-control custom-radio">
+                        <input class="custom-control-input" type="radio" formControlName="rdQ1" name="rdQ1" value="5" id="lblrdQ5" />
+                        <label class="custom-control-label" for="lblrdQ5">
+                          <h5>Incorrectly Registered</h5>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="custom-control custom-radio">
+                        <input class="custom-control-input" type="radio" name="rdQ1" value="6" id="lblrdQ6" formControlName="rdQ1" />
+                        <label class="custom-control-label" for="lblrdQ6">
+                          <h5>Do not wish to disclouse</h5>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <button type="submit" [disabled]="!f.gnTypeTwoUser.valid" class="btn btn-primary">
+                    Submit
+                  </button>
+                </ng-template>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

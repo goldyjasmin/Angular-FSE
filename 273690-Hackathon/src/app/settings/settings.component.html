@@ -1,0 +1,150 @@
+<app-header></app-header>
+<div class="mainWrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-12 py-2 grid-margin stretch-card">
+        <div class="card" style="height:50vh;overflow-y: scroll">
+          <div class="card-body">
+            <div class="">
+              <h5>
+                <p class="card-title m-0 font-weight-bold text-primary">
+                  Associae Feedback Pending
+                  <span style="font-size:30px;" class="px-1 fa fa-user"></span>
+                </p>
+              </h5>
+              <div class="col-md-3 ">
+                <div class="py-2">
+                  <select [(ngModel)]="eventSelectedId" class="custom-select mr-sm-2" (change)="onEventChange($event.target.value)">
+                    <option value="0">--Please Select--</option>
+                    <option *ngFor="let e of eventNames" value="{{ e.eventId }}">
+                      {{ e.eventName }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-12 ">
+                <p>
+
+                  <b>
+                    <i class="float-right">
+                      <span>Select the Assocaiates and clik on
+                        <span style="font-size: 25px" class=" fas fa-bell" aria-hidden="true"></span> for mail notification</span>
+                    </i>
+                  </b>
+                </p>
+              </div>
+            </div>
+            <form [formGroup]="form">
+              <div class="table-responsive" formGroupName="gnPendingFeedbackList">
+                <table class="table table-hover">
+                  <thead class="bg-success">
+                    <tr>
+                      <th class="pl-0">
+                        Name
+                      </th>
+                      <th>Location</th>
+                      <th class="">
+                        User Category
+                      </th>
+                      <th class="">
+                        Event Name
+                      </th>
+                      <th class="pl-0">
+                        <button type="button" class="btn btn-primary" aria-label="Left Align">
+                          <span (click)="sendMail()" class="btn-primary fa fa-bell" aria-hidden="true"></span>
+                        </button>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let user of pendingList; let i = index">
+                      <td class="pl-0">
+                        <div class="">
+                          <h6 class="font-weight-medium">{{ user.name }}</h6>
+                        </div>
+                      </td>
+                      <td>
+                        <p class="">{{ user.location }}</p>
+                      </td>
+                      <td>
+                        <p class="">{{ user.userType }}</p>
+                      </td>
+                      <td>
+                        <p class="">{{ user.eventName }}</p>
+                      </td>
+                      <td class="pl-0">
+                        <input type="checkbox" (click)="
+                            getIndex(
+                              user.eventPrimaryId,
+                              user.employeeId,
+                              user.userTypeId
+                            )
+                          " formControlName="configureMail" checked="checked" />
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="row py-1" s>
+      <div class="col-md-12">
+        <div class="card" style="height:50vh;overflow-y: scroll">
+          <div class="card-body">
+            <h5>
+              <p class="card-title font-weight-bold text-primary">
+                Configure
+                <span style="font-size:30px;" class="px-1 fa fa-tools"></span>
+              </p>
+            </h5>
+            <div class="row"></div>
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead>
+                  <tr class="border-top-0 bg-success">
+                    <th class="">Emp Id</th>
+                    <th class="">Name</th>
+                    <th class="">Email</th>
+                    <th class="">Active</th>
+                    <th class="">Role</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let u of user; let i = index">
+                    <td>{{ u.userId }}</td>
+                    <td>{{ u.name }}</td>
+                    <td>{{ u.email }}</td>
+                    <td class="font-weight-bold">
+                      <input type="checkbox" [(ngModel)]="u.isActive" />
+                    </td>
+                    <td class="font-weight-bold">
+                      <select [(ngModel)]="u.selectedRoleId" class="custom-select mr-sm-2" (change)="onRoleChange($event.target.value)">
+                        <option value="0">--Please Select--</option>
+                        <option *ngFor="let r of roles" value="{{ r.roleId }}">
+                          {{ r.rolenNme }}
+                        </option>
+                      </select>
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-primary" aria-label="Left Align">
+                        <span (click)="
+                            saveUser(u.userId, u.isActive, u.selectedRoleId)
+                          " class="btn-primary fa fa-save" aria-hidden="true"></span>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
